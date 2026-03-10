@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Abacate – Escolha seu Plano</title>
+
+<!-- FAVICONS -->
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+<meta name="theme-color" content="#2D7A4F">
+
+<!-- UTMify Pixel -->
+<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
+<script>
+  window.pixelId = "69a9c5eff236da07a4cb1bca";
+  var a = document.createElement("script");
+  a.setAttribute("async",""); a.setAttribute("defer","");
+  a.setAttribute("src","https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --green: #2D7A4F;
+    --green-light: #3DA068;
+    --green-pale: #E8F5EE;
+    --green-soft: #C8E6D4;
+    --dark: #1A2E22;
+    --gray: #6B7A72;
+    --gray-light: #F0F4F2;
+    --white: #fff;
+  }
+
+  html, body {
+    height: 100%;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--dark);
+  }
+
+  body {
+    min-height: 100dvh;
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+  }
+
+  /* ── LOGO ── */
+  .logo {
+    display: flex; align-items: center; gap: 9px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800; font-size: 1.1rem; color: white;
+    margin-bottom: 28px;
+    text-decoration: none;
+  }
+  .logo-icon {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, var(--green-light), #4a7c3c);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 12px rgba(45,122,79,0.4);
+  }
+
+  /* ── HEADLINE ── */
+  .headline {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .headline h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 900;
+    color: white;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  .headline h1 em { font-style: normal; color: var(--green-light); }
+  .headline p {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* ── GRID ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    width: 100%;
+    max-width: 880px;
+    align-items: start;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: rgba(255,255,255,0.05);
+    border: 1.5px solid rgba(255,255,255,0.1);
+    border-radius: 22px;
+    padding: 28px 22px 22px;
+    position: relative;
+    transition: transform 0.25s, border-color 0.25s;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255,255,255,0.22);
+  }
+
+  /* Destaque */
+  .card.featured {
+    background: white;
+    border-color: white;
+    transform: scale(1.04);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.45);
+  }
+  .card.featured:hover {
+    transform: scale(1.04) translateY(-5px);
+  }
+
+  .badge-popular {
+    position: absolute;
+    top: -13px; left: 50%; transform: translateX(-50%);
+    background: #F6A817;
+    color: #1A2E22;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800; font-size: 0.7rem;
+    border-radius: 20px; padding: 4px 14px;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+  }
+
+  /* Plan label */
+  .plan-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800; font-size: 0.82rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .card.featured .plan-label { color: var(--gray); }
+
+  /* Price */
+  .price-from {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
+    text-decoration: line-through;
+    margin-bottom: 2px;
+  }
+  .card.featured .price-from { color: var(--gray); opacity: 0.6; }
+
+  .price {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 2.8rem; font-weight: 900;
+    color: white; line-height: 1;
+    margin-bottom: 2px;
+  }
+  .card.featured .price { color: var(--dark); }
+  .price sup {
+    font-size: 1rem; vertical-align: top; margin-top: 9px;
+  }
+  .price span { font-size: 1.4rem; }
+
+  .price-note {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 20px;
+  }
+  .card.featured .price-note { color: var(--gray); }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+    margin-bottom: 16px;
+  }
+  .card.featured .divider { background: var(--gray-light); }
+
+  /* Features list */
+  .features {
+    list-style: none;
+    margin-bottom: 22px;
+  }
+  .features li {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.75);
+    padding: 4px 0;
+    line-height: 1.45;
+    display: flex; gap: 7px; align-items: flex-start;
+  }
+  .card.featured .features li { color: var(--dark); }
+  .features li.off { color: rgba(255,255,255,0.25); }
+  .card.featured .features li.off { color: #b0bcba; }
+
+  /* CTA Button */
+  .btn {
+    display: block; width: 100%;
+    padding: 14px 10px;
+    border-radius: 50px;
+    text-align: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800; font-size: 0.9rem;
+    cursor: pointer; border: none;
+    transition: all 0.22s;
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
+  .btn-ghost {
+    background: rgba(255,255,255,0.08);
+    color: white;
+    border: 1.5px solid rgba(255,255,255,0.2);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.15); }
+
+  .btn-primary {
+    background: var(--green);
+    color: white;
+    box-shadow: 0 8px 28px rgba(45,122,79,0.5);
+  }
+  .btn-primary:hover { background: var(--green-light); transform: translateY(-2px); }
+
+  .guarantee {
+    text-align: center;
+    font-size: 0.68rem;
+    color: rgba(255,255,255,0.25);
+  }
+  .card.featured .guarantee { color: var(--gray); }
+
+  /* ── FOOTER NOTE ── */
+  .footer-note {
+    margin-top: 28px;
+    text-align: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.75rem;
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    body { justify-content: flex-start; padding: 32px 14px 40px; }
+    .grid {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+    }
+    .card.featured { transform: none; order: -1; }
+    .card.featured:hover { transform: translateY(-5px); }
+  }
+
+  @media (max-width: 380px) {
+    .headline h1 { font-size: 1.45rem; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- LOGO -->
+  <a href="index.html" class="logo">
+    <div class="logo-icon">🥑</div>
+    Dr. Abacate
+  </a>
+
+  <!-- HEADLINE -->
+  <div class="headline">
+    <h1>Escolha seu plano e<br><em>comece hoje.</em></h1>
+    <p>Pagamento único · Sem mensalidade · Acesso vitalício</p>
+  </div>
+
+  <!-- PLANOS -->
+  <div class="grid">
+
+    <!-- BASIC -->
+    <div class="card">
+      <div class="plan-label">🥑 Basic</div>
+      <div class="price-from">De R$ 49,90</div>
+      <div class="price"><sup>R$</sup>19<span>,90</span></div>
+      <div class="price-note">pagamento único · acesso vitalício</div>
+      <div class="divider"></div>
+      <ul class="features">
+        <li>✅ Dieta personalizada completa</li>
+        <li>✅ Cálculo automático de calorias</li>
+        <li>✅ 4 refeições organizadas</li>
+        <li>✅ Alimentos que você escolhe</li>
+        <li>✅ Atualizações futuras inclusas</li>
+        <li class="off">❌ Ficha de treino</li>
+        <li class="off">❌ Acompanhamento profissional</li>
+      </ul>
+      <a href="montar-dieta.html" class="btn btn-ghost">Começar com o Basic →</a>
+      <div class="guarantee">🔒 Compra segura</div>
+    </div>
+
+    <!-- PLUS (destaque) -->
+    <div class="card featured">
+      <div class="badge-popular">⭐ MAIS POPULAR</div>
+      <div class="plan-label">💪 Plus</div>
+      <div class="price-from">De R$ 89,90</div>
+      <div class="price"><sup>R$</sup>49<span>,90</span></div>
+      <div class="price-note">pagamento único · acesso vitalício</div>
+      <div class="divider"></div>
+      <ul class="features">
+        <li>✅ Dieta personalizada completa</li>
+        <li>✅ Cálculo automático de calorias</li>
+        <li>✅ 4 refeições organizadas</li>
+        <li>✅ Alimentos que você escolhe</li>
+        <li>✅ Atualizações futuras inclusas</li>
+        <li>✅ <strong>Ficha de treino personalizada</strong></li>
+        <li class="off">❌ Acompanhamento profissional</li>
+      </ul>
+      <a href="montar-dieta-plus.html" class="btn btn-primary">Quero o Plus →</a>
+      <div class="guarantee">🔒 Compra segura · Mais escolhido</div>
+    </div>
+
+    <!-- PRO -->
+    <div class="card">
+      <div class="plan-label">🏆 Pro</div>
+      <div class="price-from">De R$ 179,90</div>
+      <div class="price"><sup>R$</sup>99<span>,90</span></div>
+      <div class="price-note">pagamento único · acesso vitalício</div>
+      <div class="divider"></div>
+      <ul class="features">
+        <li>✅ Dieta personalizada completa</li>
+        <li>✅ Cálculo automático de calorias</li>
+        <li>✅ 4 refeições organizadas</li>
+        <li>✅ Alimentos que você escolhe</li>
+        <li>✅ Atualizações futuras inclusas</li>
+        <li>✅ <strong>Ficha de treino personalizada</strong></li>
+        <li>✅ <strong>Acompanhamento com profissional</strong></li>
+      </ul>
+      <a href="montar-dieta-pro.html" class="btn btn-ghost">Quero o Pro →</a>
+      <div class="guarantee">🔒 Compra segura</div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER NOTE -->
+  <div class="footer-note">
+    <span>🔒 Pagamento 100% seguro</span>
+    <span>⚡ Acesso imediato</span>
+    <span>💳 Parcela em até 12x</span>
+  </div>
+
+</body>
+</html>
